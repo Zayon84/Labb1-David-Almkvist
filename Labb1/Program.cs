@@ -33,35 +33,30 @@ void ScanText(string stringToScan)
 	{
         if (CheckIfDigit(stringToScan[i]))
         {
-            string subString = "";
-            subString += stringToScan[i];
-
-            ScanNextChar(i, stringToScan, subString);
-
+            ScanNextChar(i, stringToScan);
         }
-
-
-        //Console.WriteLine($"Looping nr {i}, Char = {defaultStringForTest[i]}");
-        //PrintCheckIfDigitResult(i);
     }
 
-    Console.WriteLine($"\n And the sum is: {sumOfAllNumbers}");
+    Console.WriteLine($"\nAnd the sum is: {sumOfAllNumbers}");
 }
 
 
-void ScanNextChar(int mainLoopsIndex,string stringToScan, string subString)
+void ScanNextChar(int mainLoopsIndex,string stringToScan)
 {
+    string currentNrString = "";
+    currentNrString += stringToScan[mainLoopsIndex];
+
     for (int j = mainLoopsIndex + 1; j < stringToScan.Length; j++)
     {
         if (CheckIfDigit(stringToScan[j]))
         {
-            subString += stringToScan[j];
+            currentNrString += stringToScan[j];
 
             if (stringToScan[j] == stringToScan[mainLoopsIndex])
             {
-                Console.Write($"we add {subString}: ");
+                Console.Write($"we add {currentNrString}: ");
                 PrintCheckIfDigitResult(mainLoopsIndex);            //TODO: remove when done testing
-                AddToSum(long.Parse(subString));
+                AddToSum(long.Parse(currentNrString));
 
                 return;
             }
@@ -76,7 +71,7 @@ void ScanNextChar(int mainLoopsIndex,string stringToScan, string subString)
 
 bool CheckIfDigit(char charToTest)
 {
-    if (char.IsDigit(charToTest))   // icke siffra hittad
+    if (char.IsDigit(charToTest))
     {
         return true;
     }
