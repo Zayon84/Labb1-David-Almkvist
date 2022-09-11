@@ -54,10 +54,8 @@ void ScanNextChar(int mainLoopsIndex,string stringToScan)
 
             if (stringToScan[j] == stringToScan[mainLoopsIndex])
             {
-                Console.Write($"we add {currentNrString}: ");
-                PrintCheckIfDigitResult(mainLoopsIndex);            //TODO: remove when done testing
                 AddToSum(long.Parse(currentNrString));
-
+                PrintStringInColors(mainLoopsIndex, j);
                 return;
             }
         }
@@ -69,6 +67,29 @@ void ScanNextChar(int mainLoopsIndex,string stringToScan)
 }
 
 
+void PrintStringInColors(int startColorIndex, int endColorIndex)
+{
+    for (int i = 0; i < defaultStringForTest.Length; i++)                   // TODO: Change when done with test String
+    {
+        if (i >= startColorIndex && i <= endColorIndex)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+        }
+        else
+        {
+            resetForeGroundColor();
+        }
+        Console.Write(defaultStringForTest[i]);
+    }
+    resetForeGroundColor();
+    Console.WriteLine();
+
+    void resetForeGroundColor()
+    {
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+}
+
 bool CheckIfDigit(char charToTest)
 {
     if (char.IsDigit(charToTest))
@@ -76,12 +97,6 @@ bool CheckIfDigit(char charToTest)
         return true;
     }
     return false;
-}
-
-void PrintCheckIfDigitResult(int indexNr)                   //TODO: remove when done testing
-{
-    Console.WriteLine($"Index nr {indexNr}, Char = {defaultStringForTest[indexNr]} is a digit = {CheckIfDigit(defaultStringForTest[indexNr])}");
-
 }
 
 void AddToSum(long valueToAdd)
