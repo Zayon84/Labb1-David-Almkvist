@@ -60,12 +60,11 @@ void ScanNextChar(int mainLoopsIndex,string stringToScan, string subString)
             if (stringToScan[j] == stringToScan[mainLoopsIndex])
             {
                 Console.Write($"we add {subString}: ");
-                PrintCheckIfDigitResult(mainLoopsIndex);
+                PrintCheckIfDigitResult(mainLoopsIndex);            //TODO: remove when done testing
                 AddToSum(long.Parse(subString));
 
                 return;
             }
-
         }
         else
         {
@@ -84,7 +83,7 @@ bool CheckIfDigit(char charToTest)
     return false;
 }
 
-void PrintCheckIfDigitResult(int indexNr)
+void PrintCheckIfDigitResult(int indexNr)                   //TODO: remove when done testing
 {
     Console.WriteLine($"Index nr {indexNr}, Char = {defaultStringForTest[indexNr]} is a digit = {CheckIfDigit(defaultStringForTest[indexNr])}");
 
