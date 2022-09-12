@@ -28,17 +28,16 @@ void ScanText(string stringToScan)
     Console.WriteLine($"\nAnd the sum is: {sumOfAllNumbers}");
 }
 
-
 void ScanNextChar(int mainLoopsIndex,string stringToScan)
 {
     string currentNrString = "";
-    addDigit(stringToScan[mainLoopsIndex]);
+    addCurrentDigitToString(stringToScan[mainLoopsIndex]);
 
     for (int j = mainLoopsIndex + 1; j < stringToScan.Length; j++)
     {
         if (char.IsDigit(stringToScan[j]))
         {
-            addDigit(stringToScan[j]);
+            addCurrentDigitToString(stringToScan[j]);
 
             if (stringToScan[j] == stringToScan[mainLoopsIndex])
             {
@@ -53,7 +52,7 @@ void ScanNextChar(int mainLoopsIndex,string stringToScan)
         }
     }
 
-    void addDigit(char digit)
+    void addCurrentDigitToString(char digit)
     {
         currentNrString += digit;
     }
@@ -89,11 +88,6 @@ void ReplaceStringIfEmptyWithDefault()
         Console.WriteLine($"No text entered! Using default string: {defaultStringForTest}");
         inputString = defaultStringForTest;
     }
-}
-
-bool CheckIfDigit(char charToTest)
-{
-    return (char.IsDigit(charToTest));
 }
 
 void AddToSum(long valueToAdd)
