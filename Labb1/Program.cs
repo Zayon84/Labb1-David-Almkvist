@@ -1,47 +1,25 @@
 ﻿// C# Labb1 – Hitta tal i sträng med tecken 
 // David Almvkvist - Sep 2022
 
-
-using System.Data.SqlTypes;
-
 Console.WriteLine("Labb 1 - Hitta tal i sträng med tecken! \n");
 
-Console.Write("Enter a string with numbers and laters");
-
+Console.Write("Enter a string with numbers and latters: ");
 string inputString = Console.ReadLine();
+
 string defaultStringForTest = "29535123p48723487597645723645";
-
-
-if (inputString == "")
-{
-    inputString = defaultStringForTest;
-}
-
 long sumOfAllNumbers = 0;
 
+ReplaceStringIfEmptyWithDefault();
 
-
-// Loop all characters
 ScanText(inputString);
-//check if its a number
-
-// loop to find next same number
-
-// Add to sum
-
-
-// Convert to int
-
-
-
 
 void ScanText(string stringToScan)
 {
-	Console.WriteLine("Our text: " + stringToScan + "\n");				//TODO: remove when done testing
+    Console.WriteLine();
 
-	for (int i = 0; i < stringToScan.Length; i++)
+    for (int i = 0; i < stringToScan.Length; i++)
 	{
-        if (CheckIfDigit(stringToScan[i]))
+        if (char.IsDigit(stringToScan[i]))
         {
             ScanNextChar(i, stringToScan);
         }
@@ -54,13 +32,13 @@ void ScanText(string stringToScan)
 void ScanNextChar(int mainLoopsIndex,string stringToScan)
 {
     string currentNrString = "";
-    currentNrString += stringToScan[mainLoopsIndex];
+    addDigit(stringToScan[mainLoopsIndex]);
 
     for (int j = mainLoopsIndex + 1; j < stringToScan.Length; j++)
     {
-        if (CheckIfDigit(stringToScan[j]))
+        if (char.IsDigit(stringToScan[j]))
         {
-            currentNrString += stringToScan[j];
+            addDigit(stringToScan[j]);
 
             if (stringToScan[j] == stringToScan[mainLoopsIndex])
             {
@@ -74,8 +52,12 @@ void ScanNextChar(int mainLoopsIndex,string stringToScan)
             return;
         }
     }
-}
 
+    void addDigit(char digit)
+    {
+        currentNrString += digit;
+    }
+}
 
 void PrintStringInColors(int startColorIndex, int endColorIndex)
 {
@@ -97,6 +79,15 @@ void PrintStringInColors(int startColorIndex, int endColorIndex)
     void resetForeGroundColor()
     {
         Console.ForegroundColor = ConsoleColor.White;
+    }
+}
+
+void ReplaceStringIfEmptyWithDefault()
+{
+    if (string.IsNullOrWhiteSpace(inputString))
+    {
+        Console.WriteLine($"No text entered! Using default string: {defaultStringForTest}");
+        inputString = defaultStringForTest;
     }
 }
 
