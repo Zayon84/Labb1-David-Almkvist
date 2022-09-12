@@ -92,11 +92,7 @@ void PrintStringInColors(int startColorIndex, int endColorIndex)
 
 bool CheckIfDigit(char charToTest)
 {
-    if (char.IsDigit(charToTest))
-    {
-        return true;
-    }
-    return false;
+    return (char.IsDigit(charToTest));
 }
 
 void AddToSum(long valueToAdd)
