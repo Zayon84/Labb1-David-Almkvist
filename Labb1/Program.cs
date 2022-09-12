@@ -6,13 +6,23 @@ using System.Data.SqlTypes;
 
 Console.WriteLine("Labb 1 - Hitta tal i sträng med tecken! \n");
 
+Console.Write("Enter a string with numbers and laters");
+
+string inputString = Console.ReadLine();
 string defaultStringForTest = "29535123p48723487597645723645";
+
+
+if (inputString == "")
+{
+    inputString = defaultStringForTest;
+}
+
 long sumOfAllNumbers = 0;
 
 
 
 // Loop all characters
-ScanText(defaultStringForTest);
+ScanText(inputString);
 //check if its a number
 
 // loop to find next same number
@@ -69,7 +79,7 @@ void ScanNextChar(int mainLoopsIndex,string stringToScan)
 
 void PrintStringInColors(int startColorIndex, int endColorIndex)
 {
-    for (int i = 0; i < defaultStringForTest.Length; i++)                   // TODO: Change when done with test String
+    for (int i = 0; i < inputString.Length; i++)                   // TODO: Change when done with test String
     {
         if (i >= startColorIndex && i <= endColorIndex)
         {
@@ -79,7 +89,7 @@ void PrintStringInColors(int startColorIndex, int endColorIndex)
         {
             resetForeGroundColor();
         }
-        Console.Write(defaultStringForTest[i]);
+        Console.Write(inputString[i]);
     }
     resetForeGroundColor();
     Console.WriteLine();
