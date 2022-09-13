@@ -60,7 +60,7 @@ void ScanNextChar(int mainLoopsIndex,string stringToScan)
 
 void PrintStringInColors(int startColorIndex, int endColorIndex)
 {
-    for (int i = 0; i < inputString.Length; i++)                   // TODO: Change when done with test String
+    for (int i = 0; i < inputString.Length; i++)
     {
         if (i >= startColorIndex && i <= endColorIndex)
         {
